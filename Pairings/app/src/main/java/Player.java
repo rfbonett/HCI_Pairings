@@ -3,6 +3,7 @@ import java.util.ArrayList;
 /**
  * This class stores the data on each player (or team) involved in a given tournament.
  * This information includes the player's name, record, place, and previous opponents.
+ * You can manipulate all of these variables from within the application.
  */
 public class Player {
 
