@@ -95,7 +95,9 @@ public class Player {
     }
 
     // Return this player's number of game losses.
-    public int getGameLosses() { return gamesPlayed - gameWins; }
+    public int getGameLosses() {
+        return gamesPlayed - gameWins;
+    }
 
     // Return this player's number of games played.
     public int getGamesPlayed() {
