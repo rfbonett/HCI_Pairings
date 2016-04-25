@@ -17,19 +17,19 @@ public class Player {
         gamesPlayed = 0;
         matchWins = 0;
         matchLosses = 0;
-        place = 0;
         opponents = new ArrayList<Player>();
+        place = 0;
         name = "playerName";
     }
 
-    // Constructor with name.
-    public Player(String nam) {
+    // Constructor with name and place.
+    public Player(String nam, long plac) {
         gameWins = 0;
         gamesPlayed = 0;
         matchWins = 0;
         matchLosses = 0;
-        place = 0;
         opponents = new ArrayList<Player>();
+        place = plac;
         name = nam;
     }
 
@@ -104,7 +104,11 @@ public class Player {
     }
 
     // Return this player's current standing.
-    // TODO: How should we calculate this?
+    public void setPlace(long p) {
+        place = p;
+    }
+
+    // Return this player's current standing.
     public long getPlace() {
         return place;
     }
