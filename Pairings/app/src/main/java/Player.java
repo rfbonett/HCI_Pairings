@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * This class stores the data on each player (or team) involved in a given tournament.
  * This information includes the player's name, record, place, and previous opponents.
@@ -31,10 +33,22 @@ public class Player {
         name = nam;
     }
 
+    // Add an opponent that this player played against.
+    public void addOpponent(Player p) {
+        opponents.add(p);
+    }
+
+    // Get the list of opponents this player has played against.
+    public ArrayList<Player> getOpponents() {
+        return opponents;
+    }
+
+    // Get this player's name.
     public String getName() {
         return name;
     }
 
+    // Set this player's name.
     public void setName(String nam) {
         name = nam;
     }
