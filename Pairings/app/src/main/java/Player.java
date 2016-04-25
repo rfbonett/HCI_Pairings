@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class Player {
 
-    private int gameWins, gamesPlayed, matchWins, matchLosses;
+    private int gameWins, gamesPlayed, matchWins, matchesPlayed;
     private long place;
     private String name;
     private ArrayList<Player> opponents;
@@ -16,7 +16,7 @@ public class Player {
         gameWins = 0;
         gamesPlayed = 0;
         matchWins = 0;
-        matchLosses = 0;
+        matchesPlayed = 0;
         opponents = new ArrayList<Player>();
         place = 0;
         name = "playerName";
@@ -27,7 +27,7 @@ public class Player {
         gameWins = 0;
         gamesPlayed = 0;
         matchWins = 0;
-        matchLosses = 0;
+        matchesPlayed = 0;
         opponents = new ArrayList<Player>();
         place = plac;
         name = nam;
@@ -54,12 +54,12 @@ public class Player {
     }
 
     // Increase this player's number of wins.
-    public void addGameWins(int wins) {
+    public void addGameWin(int wins) {
         gameWins += wins;
     }
 
     // Increase this player's number of games played.
-    public void addGamesPlayed(int games) {
+    public void addGamePlayed(int games) {
         gamesPlayed += games;
     }
 
@@ -69,8 +69,8 @@ public class Player {
     }
 
     // Increase this player's number of match losses.
-    public void addMatchLoss() {
-        matchLosses++;
+    public void addMatchPlayed() {
+        matchesPlayed++;
     }
 
     // Return the number of match wins this player has.
@@ -80,12 +80,12 @@ public class Player {
 
     // Return the number of match losses this player has.
     public int getMatchLosses() {
-        return matchLosses;
+        return matchesPlayed - matchWins;
     }
 
     // Return the number of matches this player has played.
     public int getMatchesPlayed() {
-        return matchWins + matchLosses;
+        return matchesPlayed;
     }
 
     // Return this player's number of game wins.
