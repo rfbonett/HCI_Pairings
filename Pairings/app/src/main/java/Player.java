@@ -6,6 +6,7 @@ public class Player {
 
     private int gameWins, gamesPlayed, matchWins, matchLosses;
     private long place;
+    private String name;
     private ArrayList<Player> opponents;
 
     // Default constructor.
@@ -16,6 +17,26 @@ public class Player {
         matchLosses = 0;
         place = 0;
         opponents = new ArrayList<Player>();
+        name = "playerName";
+    }
+
+    // Constructor with name.
+    public Player(String nam) {
+        gameWins = 0;
+        gamesPlayed = 0;
+        matchWins = 0;
+        matchLosses = 0;
+        place = 0;
+        opponents = new ArrayList<Player>();
+        name = nam;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String nam) {
+        name = nam;
     }
 
     // Increase this player's number of wins.
