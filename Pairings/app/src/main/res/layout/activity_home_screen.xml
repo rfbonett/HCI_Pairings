@@ -9,8 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="gui.pairings.HomeScreen">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_margin="10dp"
+        android:padding="18dp"
+        android:text="@string/new_tournament"
+        android:id="@+id/new_tournament_button"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/holo_purple"
+        android:clickable="true"
+        android:enabled="true"
+        android:onClick="moveToTournamentSetup" />
 </RelativeLayout>

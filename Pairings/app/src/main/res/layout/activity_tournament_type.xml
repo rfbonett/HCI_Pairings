@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -29,8 +29,8 @@
             android:id="@+id/setupTitle"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:textSize="34sp"
-            android:padding="25dp" />
+            android:textSize="32sp"
+            android:padding="10dp" />
 
         <EditText
             android:layout_width="300dp"
@@ -39,62 +39,74 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:hint="@string/tournament_name"
-            android:padding="18dp" />
+            android:maxLength="16"
+            android:singleLine="true"
+            android:padding="16dp" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:text="@string/round_robin"
             android:id="@+id/round_robin_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:padding="16dp"
+            android:background="@color/holo_purple"
+            android:clickable="true"
+            android:enabled="true" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:text="@string/swiss"
             android:id="@+id/swiss_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:padding="16dp"
+            android:background="@color/holo_purple"
+            android:enabled="true"
+            android:clickable="true" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:text="@string/single_elimination"
             android:id="@+id/single_elim_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:padding="16dp"
+            android:background="@color/holo_purple"
+            android:clickable="true"
+            android:enabled="true" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:text="@string/double_elimination"
             android:id="@+id/double_elim_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:padding="16dp"
+            android:background="@color/holo_purple"
+            android:enabled="true"
+            android:clickable="true" />
 
         <Button
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:text="@string/add_players"
             android:id="@+id/add_players_button"
             android:layout_gravity="center_horizontal"
             android:onClick="nextScreen"
-            android:padding="25dp"
-            android:background="@color/holo_purple" />
+            android:padding="20dp"
+            android:background="@color/holo_purple"
+            android:clickable="true"
+            android:enabled="false" />
 
     </LinearLayout>
 

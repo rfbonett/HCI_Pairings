@@ -10,4 +10,7 @@
     <string name="double_elimination">Double Elimination</string>
     <string name="swiss">Swiss</string>
     <string name="add_players">Add Players</string>
+    <string name="randomize_seeds">Randomize Seeds</string>
+    <string name="begin_tournament">Begin Tournament</string>
+    <string name="new_tournament">New Tournament</string>
 </resources>

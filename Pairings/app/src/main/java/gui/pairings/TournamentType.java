@@ -1,14 +1,15 @@
 package gui.pairings;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class TournamentType extends AppCompatActivity {
+public class TournamentType extends Activity {
 
     private Button swiss, roundRobin, doubleElim, singleElim, addPlayers;
     private EditText titleField;
@@ -34,9 +35,6 @@ public class TournamentType extends AppCompatActivity {
         buttons.add(roundRobin);
         buttons.add(singleElim);
         buttons.add(doubleElim);
-
-        // Disable the button that moves you to the next screen.
-        addPlayers.setEnabled(false);
     }
 
     /*
@@ -63,7 +61,7 @@ public class TournamentType extends AppCompatActivity {
     /*
      * Move to the next screen and send it the tournament type and name.
      */
-    protected void nextScreen(Button btn) {
+    protected void nextScreen(View view) {
         // Grab the tournament name.
         tournamentName = titleField.getText().toString();
         if(tournamentName.equals("")) {
