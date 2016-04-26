@@ -30,7 +30,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:textSize="32sp"
-            android:padding="10dp" />
+            android:padding="15dp" />
 
         <EditText
             android:layout_width="300dp"
@@ -41,17 +41,17 @@
             android:hint="@string/tournament_name"
             android:maxLength="16"
             android:singleLine="true"
-            android:padding="16dp" />
+            android:padding="15dp" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="10dp"
             android:text="@string/round_robin"
             android:id="@+id/round_robin_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="16dp"
+            android:padding="15dp"
             android:background="@color/holo_purple"
             android:clickable="true"
             android:enabled="true" />
@@ -59,12 +59,12 @@
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="10dp"
             android:text="@string/swiss"
             android:id="@+id/swiss_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="16dp"
+            android:padding="15dp"
             android:background="@color/holo_purple"
             android:enabled="true"
             android:clickable="true" />
@@ -72,12 +72,12 @@
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="10dp"
             android:text="@string/single_elimination"
             android:id="@+id/single_elim_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="16dp"
+            android:padding="15dp"
             android:background="@color/holo_purple"
             android:clickable="true"
             android:enabled="true" />
@@ -85,12 +85,12 @@
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="10dp"
             android:text="@string/double_elimination"
             android:id="@+id/double_elim_button"
             android:layout_gravity="center_horizontal"
             android:onClick="chooseType"
-            android:padding="16dp"
+            android:padding="15dp"
             android:background="@color/holo_purple"
             android:enabled="true"
             android:clickable="true" />
@@ -98,7 +98,7 @@
         <Button
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:text="@string/add_players"
             android:id="@+id/add_players_button"
             android:layout_gravity="center_horizontal"

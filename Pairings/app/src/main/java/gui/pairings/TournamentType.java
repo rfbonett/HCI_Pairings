@@ -41,19 +41,19 @@ public class TournamentType extends Activity {
      * Change the color of the clicked button to a darker color, and change
      * the color of all the other buttons back to normal.
      */
-    protected void chooseType(Button btn) {
+    protected void chooseType(View btn) {
         // Set the color of the pressed button to stand out and set the color of
         // the other buttons back to normal.
         for(Button b : buttons) {
             if(b.getId() == btn.getId()) {
-                btn.setBackgroundColor(android.R.color.holo_orange_dark);
+                btn.setBackgroundResource(android.R.color.holo_orange_dark);
             }
             else {
-                b.setBackgroundColor(R.color.holo_purple);
+                b.setBackgroundResource(R.color.holo_purple);
             }
         }
         // Store the type of tournament that was selected.
-        tournamentType = btn.getText().toString();
+        tournamentType = ((Button)btn).getText().toString();
         // Enable the button that moves you to the next screen.
         addPlayers.setEnabled(true);
     }
