@@ -3,4 +3,11 @@
     <string name="title_activity_tournament_screen">TournamentScreen</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tournament_setup">Tournament Setup</string>
+    <string name="tournament_name">Tournament Name</string>
+    <string name="round_robin">Round Robin</string>
+    <string name="single_elimination">Single Elimination</string>
+    <string name="double_elimination">Double Elimination</string>
+    <string name="swiss">Swiss</string>
+    <string name="add_players">Add Players</string>
 </resources>

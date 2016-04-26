@@ -17,9 +17,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentEnd="true">
 
         <TextView
             android:layout_width="fill_parent"
@@ -35,11 +33,12 @@
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:id="@+id/name_field"
+            android:id="@+id/tournamentNameField"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:hint="@string/tournament_name"
-            android:padding="18dp" />
+            android:padding="15dp"
+            android:layout_margin="10dp" />
 
         <Button
             android:layout_width="300dp"
@@ -48,9 +47,11 @@
             android:text="@string/round_robin"
             android:id="@+id/round_robin_button"
             android:layout_gravity="center_horizontal"
-            android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:longClickable="false"
+            android:clickable="false"
+            android:elegantTextHeight="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
 
         <Button
             android:layout_width="300dp"
@@ -59,9 +60,10 @@
             android:text="@string/swiss"
             android:id="@+id/swiss_button"
             android:layout_gravity="center_horizontal"
-            android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:longClickable="false"
+            android:clickable="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
 
         <Button
             android:layout_width="300dp"
@@ -70,20 +72,25 @@
             android:text="@string/single_elimination"
             android:id="@+id/single_elim_button"
             android:layout_gravity="center_horizontal"
-            android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:longClickable="false"
+            android:clickable="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:text="@string/double_elimination"
             android:id="@+id/double_elim_button"
             android:layout_gravity="center_horizontal"
-            android:onClick="chooseType"
-            android:padding="18dp"
-            android:background="@color/holo_purple" />
+            android:longClickable="false"
+            android:clickable="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
 
         <Button
             android:layout_width="330dp"
@@ -92,10 +99,10 @@
             android:text="@string/add_players"
             android:id="@+id/add_players_button"
             android:layout_gravity="center_horizontal"
-            android:onClick="nextScreen"
-            android:padding="25dp"
-            android:background="@color/holo_purple" />
+            android:longClickable="false"
+            android:clickable="false"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp" />
 
     </LinearLayout>
-
 </RelativeLayout>
