@@ -1,3 +1,5 @@
+package gui.pairings;
+
 import java.util.ArrayList;
 
 /**
@@ -148,5 +150,11 @@ public class Player {
 
         // If this player hasn't had any opponents, return 0.
         return 0;
+    }
+
+    // Set how gui.pairings.Player object is viewed as a String.
+    @Override
+    public String toString() {
+        return name;
     }
 }
