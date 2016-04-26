@@ -17,6 +17,8 @@ public class AddPlayers extends Activity {
     private EditText player_edit;
     private ListView player_viewer;
     private MyArrayAdapter adapter;
+    private String tournamentType;
+    private long currentSeed = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,22 +29,32 @@ public class AddPlayers extends Activity {
         player_viewer = (ListView) findViewById(R.id.pselect_listView);
         adapter = new MyArrayAdapter(this, R.layout.player_view, selectionList);
         player_viewer.setAdapter(adapter);
+
+        // Get the information passed from the TournamentScreen activity.
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            tournamentType = extras.getString("tournamentType");
+        }
     }
 
     // This defines the action that the Add button will take.
     // The player list will be updated every time a player is added.
     public void addPlayer(View view) {
+        // Add a new player to the list.
         String new_player = player_edit.getText().toString();
-        Player player = new Player();
-        player.setName(new_player);
+        Player player = new Player(new_player, ++currentSeed);
         selectionList.add(player);
         adapter.notifyDataSetChanged();
+
+        // Reset the text field.
+        player_edit.setText("");
     }
 
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
         Intent intent = new Intent(this, TournamentScreen.class); // This will be changed to the following class name
-        intent.putExtra("gui.pairings.Player Selections", selectionList);
+        intent.putExtra("Player Selections", selectionList);
+        intent.putExtra("tournamentType", tournamentType);
         startActivity(intent);
     }
 
