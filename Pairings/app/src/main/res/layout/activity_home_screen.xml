@@ -9,17 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="gui.pairings.HomeScreen">
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/pairings_logo"
+        android:id="@+id/imageView"
+        android:contentDescription="Pairings Logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:padding="18dp"
         android:text="@string/new_tournament"
         android:id="@+id/new_tournament_button"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
         android:background="@color/holo_purple"
         android:clickable="true"
         android:enabled="true"
-        android:onClick="moveToTournamentSetup" />
+        android:onClick="moveToTournamentSetup"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
