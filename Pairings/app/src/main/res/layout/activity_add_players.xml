@@ -76,6 +76,7 @@
         android:layout_above="@id/rand_Button"
         android:layout_alignParentStart="true"
         android:smoothScrollbar="true"
+        android:isScrollContainer="false"
         android:scrollIndicators="right" />
     
 </RelativeLayout>
