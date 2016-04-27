@@ -1,18 +1,16 @@
 package gui.pairings;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
-public class AddPlayers extends Activity {
 
+public class PlayerSelectActivity extends AppCompatActivity {
     private ArrayList<Player> selectionList;
     private EditText player_edit;
     private ListView player_viewer;
@@ -23,7 +21,7 @@ public class AddPlayers extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_players);
+        setContentView(R.layout.activity_player_select);
         selectionList = new ArrayList<>();
         player_edit = (EditText) findViewById(R.id.player_name_edit);
         player_viewer = (ListView) findViewById(R.id.pselect_listView);
@@ -40,7 +38,7 @@ public class AddPlayers extends Activity {
     // This defines the action that the Add button will take.
     // The player list will be updated every time a player is added.
     public void addPlayer(View view) {
-        // Add a new player to the list.
+        // Add a new player to the list
         String new_player = player_edit.getText().toString();
         Player player = new Player(new_player, ++currentSeed);
         selectionList.add(player);
@@ -52,7 +50,7 @@ public class AddPlayers extends Activity {
 
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
-        Intent intent = new Intent(this, TournamentScreen.class); // This will be changed to the following class name
+        Intent intent = new Intent(this, filler.class); // This will be changed to the following class name
         intent.putExtra("Player Selections", selectionList);
         intent.putExtra("tournamentType", tournamentType);
         startActivity(intent);
@@ -60,7 +58,8 @@ public class AddPlayers extends Activity {
 
     // Randomly shuffles the selected players if there is the desire for random seeds.
     public void playerShuffle(View view) {
-        Collections.shuffle(selectionList, new Random());
+        adapter.clear();
+        Collections.shuffle(selectionList);
         adapter.notifyDataSetChanged();
     }
 }
