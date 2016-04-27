@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -139,7 +138,7 @@ public class AddPlayers extends Activity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            View row = convertView;
+            View row;
             final PlayerHolder holder;
 
             // Set up the inflater.
