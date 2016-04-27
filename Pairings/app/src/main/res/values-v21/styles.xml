@@ -9,10 +9,10 @@
     </style>
 
     <style name="pairingsTheme" parent="android:Theme.Material.NoActionBar" >
-        <item name="android:colorAccent">@android:color/holo_orange_dark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/primary_material_dark</item>
-        <item name="android:colorPrimary">@color/holo_purple</item>
-        <item name="android:colorPrimaryDark">@color/holo_purple_dark</item>
-        <item name="android:navigationBarColor">@color/holo_purple_dark</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
     </style>
 </resources>

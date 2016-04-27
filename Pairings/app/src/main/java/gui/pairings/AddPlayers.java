@@ -154,7 +154,7 @@ public class AddPlayers extends Activity {
 
             // Delete button
             holder.delete = (Button) row.findViewById(R.id.del_player_button);
-            holder.delete.setBackgroundResource(R.color.holo_purple_dark);
+            holder.delete.setBackgroundResource(R.color.colorPrimaryDark);
             holder.delete.setPadding(20, 0, 20, 0);
 
             // Seed label

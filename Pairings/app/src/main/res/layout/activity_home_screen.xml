@@ -24,7 +24,7 @@
         android:padding="18dp"
         android:text="@string/new_tournament"
         android:id="@+id/new_tournament_button"
-        android:background="@color/holo_purple"
+        android:background="@color/colorPrimary"
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentSetup"

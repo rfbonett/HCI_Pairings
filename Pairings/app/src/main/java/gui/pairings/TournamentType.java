@@ -46,10 +46,10 @@ public class TournamentType extends Activity {
         // the other buttons back to normal.
         for(Button b : buttons) {
             if(b.getId() == btn.getId()) {
-                btn.setBackgroundResource(android.R.color.holo_orange_dark);
+                btn.setBackgroundResource(R.color.colorAccent);
             }
             else {
-                b.setBackgroundResource(R.color.holo_purple);
+                b.setBackgroundResource(R.color.colorPrimary);
             }
         }
         // Store the type of tournament that was selected.

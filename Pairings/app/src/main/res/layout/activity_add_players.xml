@@ -40,7 +40,7 @@
         android:id="@+id/add_Button"
         android:layout_alignBottom="@+id/player_name_edit"
         android:layout_alignParentEnd="true"
-        android:background="@color/holo_purple"
+        android:background="@color/colorPrimary"
         android:onClick="addPlayer"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
@@ -55,7 +55,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:background="@color/holo_purple"
+        android:background="@color/colorPrimary"
         android:layout_margin="5dp"
         android:onClick="createTourney"/>
 
@@ -66,7 +66,7 @@
         android:id="@+id/rand_Button"
         android:layout_above="@+id/tourney_Button"
         android:layout_alignParentStart="true"
-        android:background="@color/holo_purple"
+        android:background="@color/colorPrimary"
         android:onClick="playerShuffle"
         android:layout_margin="5dp"
         android:paddingLeft="10dp"
@@ -82,8 +82,7 @@
         android:smoothScrollbar="true"
         android:isScrollContainer="false"
         android:scrollIndicators="right"
-        android:divider="@android:color/holo_orange_dark"
-        android:dividerHeight="1dp"
+        android:dividerHeight="2dp"
         android:layout_alignParentEnd="false" />
     
 </RelativeLayout>
