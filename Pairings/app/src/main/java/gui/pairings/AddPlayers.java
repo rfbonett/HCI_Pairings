@@ -26,7 +26,7 @@ public class AddPlayers extends Activity {
     private ListView player_viewer;
     private PlayerAdapter adapter;
     private String tournamentType, tournamentName;
-    private int counter = 0;
+    private int playerCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,9 @@ public class AddPlayers extends Activity {
         // Create a new player object.
         String new_player = player_edit.getText().toString();
         if (new_player.equals("")) {
-            new_player = "player" + (++counter);
+            new_player = "player" + (++playerCounter);
         }
-        Player player = new Player(new_player, counter);
+        Player player = new Player(new_player, selectionList.size()+1);
 
         // Add it to the list.
         PlayerHolder h = new PlayerHolder();
@@ -77,11 +77,13 @@ public class AddPlayers extends Activity {
             for (PlayerHolder h : selectionList) {
                 players.add(h.player);
             }
+            // Pass the needed information to the next screen.
             intent.putExtra("players", players);
             intent.putExtra("tournamentType", tournamentType);
             intent.putExtra("tournamentName", tournamentName);
             startActivity(intent);
         } else {
+            // Show a warning that you need at least 2 players.
             Context context = getApplicationContext();
             CharSequence text = "Please add at least 2 players.";
             int duration = Toast.LENGTH_SHORT;
@@ -92,11 +94,18 @@ public class AddPlayers extends Activity {
         }
     }
 
+    // Update the seed numbers.
+    private void updateSeedNumbers() {
+        // Update the seed numbers.
+        for(int i=0; i < selectionList.size(); i++) {
+            selectionList.get(i).player.setPlace(i+1);
+        }
+    }
+
     // Randomly shuffles the selected players if there is the desire for random seeds.
-    // TODO: Fix this. Also, make it update the seed numbers.
     public void playerShuffle(View view) {
-        //adapter.clear();
         Collections.shuffle(selectionList);
+        updateSeedNumbers();
         adapter.notifyDataSetChanged();
     }
 
@@ -133,7 +142,6 @@ public class AddPlayers extends Activity {
             View row = convertView;
             final PlayerHolder holder;
 
-
             // Set up the inflater.
             LayoutInflater li = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -167,6 +175,8 @@ public class AddPlayers extends Activity {
                 public void onClick(View v) {
                     // Delete the entry.
                     selectionList.remove(holder);
+                    // Update the seeds.
+                    updateSeedNumbers();
                     // Update the visual.
                     notifyDataSetChanged();
                 }
