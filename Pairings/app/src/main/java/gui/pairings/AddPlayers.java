@@ -21,7 +21,7 @@ import java.util.Collections;
 
 
 public class AddPlayers extends Activity {
-    private ArrayList<PlayerHolder> selectionList;
+
     private EditText player_edit;
     private ListView player_viewer;
     private PlayerAdapter adapter;
@@ -31,10 +31,12 @@ public class AddPlayers extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_players);
-        selectionList = new ArrayList<>();
+
         player_edit = (EditText) findViewById(R.id.player_name_edit);
         player_viewer = (ListView) findViewById(R.id.pselect_listView);
-        adapter = new PlayerAdapter(this, selectionList);
+
+        // Set up the adapter.
+        adapter = new PlayerAdapter(this);
         player_viewer.setAdapter(adapter);
 
         // Get the information passed from the TournamentScreen activity.
@@ -51,29 +53,28 @@ public class AddPlayers extends Activity {
         // Create a new player object.
         String new_player = player_edit.getText().toString();
         if(new_player.equals("")) {
-            new_player = "player" + (selectionList.size()+1);
+            new_player = "player" + (adapter.getCount()+1);
         }
-        Player player = new Player(new_player, selectionList.size()+1);
+        Player player = new Player(new_player, adapter.getCount()+1);
 
-        // Add it to the list.
-        PlayerHolder h = new PlayerHolder();
-        h.player = player;
-        selectionList.add(h);
-
-        // Update the visual.
-        adapter.notifyDataSetChanged();
+        // Add the player to the list.
+        adapter.addPlayer(player);
 
         // Reset the text field.
         player_edit.setText("");
     }
 
+    public void playerShuffle(View view) {
+        adapter.shuffle();
+    }
+
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
-        if(selectionList.size() >= 2) {
+        if(adapter.getCount() >= 2) {
             Intent intent = new Intent(this, TournamentScreen.class);
             // Make an array of players.
             ArrayList<Player> players = new ArrayList<Player>();
-            for(PlayerHolder h : selectionList) {
+            for(PlayerHolder h : adapter.getRows()) {
                 players.add(h.player);
             }
             intent.putExtra("players", players);
@@ -91,14 +92,6 @@ public class AddPlayers extends Activity {
             toast.show();
         }
     }
-
-    // Randomly shuffles the selected players if there is the desire for random seeds.
-    // TODO: Fix this. Also, make it update the seed numbers.
-    public void playerShuffle(View view) {
-        //adapter.clear();
-        Collections.shuffle(selectionList);
-        adapter.notifyDataSetChanged();
-    }
 }
 
 /**
@@ -107,12 +100,33 @@ public class AddPlayers extends Activity {
 class PlayerAdapter extends BaseAdapter {
 
     private Activity context;
-    private ArrayList<PlayerHolder> rows;
+    public ArrayList<PlayerHolder> rows;
     private LayoutInflater inflater = null;
 
-    public PlayerAdapter(Activity context, ArrayList<PlayerHolder> rows) {
+    public PlayerAdapter(Activity context) {
         this.context = context;
-        this.rows = rows;
+        this.rows = new ArrayList<>();
+    }
+
+    public void addPlayer(Player player) {
+        // Add it to the list.
+        PlayerHolder holder = new PlayerHolder();
+        holder.player = player;
+        rows.add(holder);
+
+        // Update the visual.
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<PlayerHolder> getRows() {
+        return rows;
+    }
+
+    // Randomly shuffles the selected players if there is the desire for random seeds.
+    // TODO: Fix this. Also, make it update the seed numbers.
+    public void shuffle() {
+        Collections.shuffle(rows);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -135,7 +149,7 @@ class PlayerAdapter extends BaseAdapter {
         View row = convertView;
         PlayerHolder holder;
 
-        // If the view does not previously exist, initialize and add it to the listview
+        // If the view is not currently displayed, set it up and add it to the ListView
         if (row == null) {
             // Set up the inflater.
             LayoutInflater li = (LayoutInflater)context
@@ -171,7 +185,8 @@ class PlayerAdapter extends BaseAdapter {
             holder = (PlayerHolder)row.getTag();
         }
 
-        // Define delete button activity.
+        // Define delete button activity. This is here so it is always updated
+        // to the button's current position.
         //TODO: Fix this. It should delete the clicked entry.
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
