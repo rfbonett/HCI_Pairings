@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 
 public class AddPlayers extends Activity {
@@ -54,15 +55,16 @@ public class AddPlayers extends Activity {
 
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
-        Intent intent = new Intent(this, TournamentScreen.class); // This will be changed to the following class name
+        Intent intent = new Intent(this, TournamentScreen.class);
         intent.putExtra("Player Selections", selectionList);
         intent.putExtra("tournamentType", tournamentType);
         startActivity(intent);
     }
 
     // Randomly shuffles the selected players if there is the desire for random seeds.
+    // TODO: Fix this. Also, make it update the seed numbers.
     public void playerShuffle(View view) {
-        adapter.clear();
+        //adapter.clear();
         Collections.shuffle(selectionList);
         adapter.notifyDataSetChanged();
     }

@@ -66,15 +66,14 @@ public class MyArrayAdapter extends ArrayAdapter<Player> {
             holder = (PlayerViewHolder) row.getTag();
         }
         // Define delete button activity.
+        //TODO: Fix this. It should delete the clicked entry.
         holder.del_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Log which position was clicked.
                 Log.v("AddPlayers", "position clicked was: " + position);
-
                 // Delete the entry.
                 data.remove(position);
-
                 // Update the visual.
                 notifyDataSetChanged();
             }
