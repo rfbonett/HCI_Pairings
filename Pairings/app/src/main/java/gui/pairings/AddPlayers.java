@@ -23,7 +23,7 @@ public class AddPlayers extends Activity {
     private EditText player_edit;
     private ListView player_viewer;
     private PlayerAdapter adapter;
-    private String tournamentType;
+    private String tournamentType, tournamentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class AddPlayers extends Activity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             tournamentType = extras.getString("tournamentType");
+            tournamentName = extras.getString("tournamentName");
         }
     }
 
@@ -69,6 +70,7 @@ public class AddPlayers extends Activity {
         Intent intent = new Intent(this, TournamentScreen.class);
         intent.putExtra("Player Selections", selectionList);
         intent.putExtra("tournamentType", tournamentType);
+        intent.putExtra("tournamentName", tournamentName);
         startActivity(intent);
     }
 
@@ -140,12 +142,9 @@ class PlayerAdapter extends BaseAdapter {
             holder.seed.setPadding(0, 20, 25, 5);
             holder.seed.setTextSize(20);
 
-            // The player object being shown
-            //holder.player = rows.get(position).player;
-
             // Provide user-inputted rows to fields in order to become visible.
             holder.name.setText(rows.get(position).player.getName());
-            holder.seed.setText(Long.toString(rows.get(position).player.getPlace()));
+            holder.seed.setText(Long.toString(rows.get(position).player.getPlace())+".");
 
             // Set the row's tag.
             row.setTag(holder);
@@ -177,10 +176,10 @@ class PlayerAdapter extends BaseAdapter {
  * PlayerHolder serves as a storage class for rows in the ListView.
  */
 class PlayerHolder {
-    Player player;
-    TextView seed;
-    TextView name;
-    Button delete;
+    public Player player;
+    public TextView seed;
+    public TextView name;
+    public Button delete;
 }
 
 
