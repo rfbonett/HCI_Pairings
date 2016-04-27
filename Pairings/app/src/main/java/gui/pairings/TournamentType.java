@@ -41,7 +41,7 @@ public class TournamentType extends Activity {
      * Change the color of the clicked button to a darker color, and change
      * the color of all the other buttons back to normal.
      */
-    protected void chooseType(View btn) {
+    public void chooseType(View btn) {
         // Set the color of the pressed button to stand out and set the color of
         // the other buttons back to normal.
         for(Button b : buttons) {
@@ -61,7 +61,7 @@ public class TournamentType extends Activity {
     /*
      * Move to the next screen and send it the tournament type and name.
      */
-    protected void nextScreen(View view) {
+    public void nextScreen(View view) {
         // Grab the tournament name.
         tournamentName = titleField.getText().toString();
         if(tournamentName.equals("")) {

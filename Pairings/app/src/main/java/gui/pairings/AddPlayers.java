@@ -26,6 +26,7 @@ public class AddPlayers extends Activity {
     private ListView player_viewer;
     private PlayerAdapter adapter;
     private String tournamentType, tournamentName;
+    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class AddPlayers extends Activity {
         selectionList = new ArrayList<>();
         player_edit = (EditText) findViewById(R.id.player_name_edit);
         player_viewer = (ListView) findViewById(R.id.pselect_listView);
-        adapter = new PlayerAdapter(this, selectionList);
+        adapter = new PlayerAdapter(this);
         player_viewer.setAdapter(adapter);
 
         // Get the information passed from the TournamentScreen activity.
@@ -50,10 +51,10 @@ public class AddPlayers extends Activity {
     public void addPlayer(View view) {
         // Create a new player object.
         String new_player = player_edit.getText().toString();
-        if(new_player.equals("")) {
-            new_player = "player" + (selectionList.size()+1);
+        if (new_player.equals("")) {
+            new_player = "player" + (++counter);
         }
-        Player player = new Player(new_player, selectionList.size()+1);
+        Player player = new Player(new_player, counter);
 
         // Add it to the list.
         PlayerHolder h = new PlayerHolder();
@@ -69,19 +70,18 @@ public class AddPlayers extends Activity {
 
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
-        if(selectionList.size() >= 2) {
+        if (selectionList.size() >= 2) {
             Intent intent = new Intent(this, TournamentScreen.class);
             // Make an array of players.
             ArrayList<Player> players = new ArrayList<Player>();
-            for(PlayerHolder h : selectionList) {
+            for (PlayerHolder h : selectionList) {
                 players.add(h.player);
             }
             intent.putExtra("players", players);
             intent.putExtra("tournamentType", tournamentType);
             intent.putExtra("tournamentName", tournamentName);
             startActivity(intent);
-        }
-        else{
+        } else {
             Context context = getApplicationContext();
             CharSequence text = "Please add at least 2 players.";
             int duration = Toast.LENGTH_SHORT;
@@ -99,51 +99,46 @@ public class AddPlayers extends Activity {
         Collections.shuffle(selectionList);
         adapter.notifyDataSetChanged();
     }
-}
 
-/**
- * Holds a bunch of PlayerHolders.
- */
-class PlayerAdapter extends BaseAdapter {
 
-    private Activity context;
-    private ArrayList<PlayerHolder> rows;
-    private LayoutInflater inflater = null;
+    /**
+     * Holds a bunch of PlayerHolders.
+     */
+    class PlayerAdapter extends BaseAdapter {
 
-    public PlayerAdapter(Activity context, ArrayList<PlayerHolder> rows) {
-        this.context = context;
-        this.rows = rows;
-    }
+        private Activity context;
+        private LayoutInflater inflater = null;
 
-    @Override
-    public int getCount() {
-        return rows.size();
-    }
+        public PlayerAdapter(Activity context) {
+            this.context = context;
+        }
 
-    @Override
-    public Object getItem(int position) {
-        return rows.get(position);
-    }
+        @Override
+        public int getCount() {
+            return selectionList.size();
+        }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        @Override
+        public Object getItem(int position) {
+            return selectionList.get(position);
+        }
 
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        View row = convertView;
-        PlayerHolder holder;
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-        // If the view does not previously exist, initialize and add it to the listview
-        if (row == null) {
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            View row = convertView;
+            final PlayerHolder holder;
+
+
             // Set up the inflater.
-            LayoutInflater li = (LayoutInflater)context
+            LayoutInflater li = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = li.inflate(R.layout.player_view, null);
-
-            // Associate the container class with the xml file items.
-            holder = new PlayerHolder();
+            holder = selectionList.get(position);
 
             // Player name label
             holder.name = (TextView) row.findViewById(R.id.txtitem);
@@ -161,43 +156,36 @@ class PlayerAdapter extends BaseAdapter {
             holder.seed.setTextSize(20);
 
             // Provide user-inputted rows to fields in order to become visible.
-            holder.name.setText(rows.get(position).player.getName());
-            holder.seed.setText(Long.toString(rows.get(position).player.getPlace())+".");
+            holder.name.setText(holder.player.getName());
+            holder.seed.setText(Long.toString(holder.player.getPlace()) + ".");
 
             // Set the row's tag.
             row.setTag(holder);
-        }
-        else{
-            holder = (PlayerHolder)row.getTag();
-        }
 
-        // Define delete button activity.
-        //TODO: Fix this. It should delete the clicked entry.
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Log which position was clicked.
-                Log.v("AddPlayers", "position clicked was: " + position);
-                // Delete the entry.
-                rows.remove(position);
-                // Update the visual.
-                notifyDataSetChanged();
-            }
-        });
+            holder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Delete the entry.
+                    selectionList.remove(holder);
+                    // Update the visual.
+                    notifyDataSetChanged();
+                }
+            });
 
-        return row;
+            return row;
+        }
     }
-}
 
 
-/**
- * PlayerHolder serves as a storage class for rows in the ListView.
- */
-class PlayerHolder {
-    public Player player;
-    public TextView seed;
-    public TextView name;
-    public Button delete;
+    /**
+     * PlayerHolder serves as a storage class for rows in the ListView.
+     */
+    class PlayerHolder {
+        public Player player;
+        public TextView seed;
+        public TextView name;
+        public Button delete;
+    }
 }
 
 

@@ -18,7 +18,7 @@ public class HomeScreen extends Activity {
      * Moves to the tournament setup screen when the "New Tournament"
      * button is clicked.
      */
-    protected void moveToTournamentSetup(View view) {
+    public void moveToTournamentSetup(View view) {
         // Move to the tournament setup screen.
         Intent intent = new Intent(this, TournamentType.class);
         startActivity(intent);
