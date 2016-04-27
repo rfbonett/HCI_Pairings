@@ -50,7 +50,7 @@ public class PlayerSelectActivity extends AppCompatActivity {
 
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
-        Intent intent = new Intent(this, filler.class); // This will be changed to the following class name
+        Intent intent = new Intent(this, TournamentScreen.class); // This will be changed to the following class name
         intent.putExtra("Player Selections", selectionList);
         intent.putExtra("tournamentType", tournamentType);
         startActivity(intent);
