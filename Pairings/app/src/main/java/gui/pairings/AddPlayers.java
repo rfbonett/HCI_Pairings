@@ -1,7 +1,7 @@
 package gui.pairings;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,18 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class PlayerSelectActivity extends AppCompatActivity {
+public class AddPlayers extends Activity {
     private ArrayList<Player> selectionList;
     private EditText player_edit;
     private ListView player_viewer;
     private MyArrayAdapter adapter;
     private String tournamentType;
-    private long currentSeed = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_select);
+        setContentView(R.layout.activity_add_players);
         selectionList = new ArrayList<>();
         player_edit = (EditText) findViewById(R.id.player_name_edit);
         player_viewer = (ListView) findViewById(R.id.pselect_listView);
@@ -40,7 +39,7 @@ public class PlayerSelectActivity extends AppCompatActivity {
     public void addPlayer(View view) {
         // Add a new player to the list
         String new_player = player_edit.getText().toString();
-        Player player = new Player(new_player, ++currentSeed);
+        Player player = new Player(new_player, selectionList.size()+1);
         selectionList.add(player);
         adapter.notifyDataSetChanged();
 

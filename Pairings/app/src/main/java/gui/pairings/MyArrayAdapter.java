@@ -3,6 +3,7 @@ package gui.pairings;
 import gui.pairings.R;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +43,19 @@ public class MyArrayAdapter extends ArrayAdapter<Player> {
 
             // Associate the container class with the xml file items.
             holder = new PlayerViewHolder();
+            // Player name label
             holder.player_text = (TextView) row.findViewById(R.id.txtitem);
+            holder.player_text.setTextSize(24);
+            holder.player_text.setPadding(0, 12, 0, 0);
+            // Delete button
             holder.del_button = (Button) row.findViewById(R.id.del_player_button);
+            holder.del_button.setBackgroundResource(R.color.holo_purple_dark);
+            holder.del_button.setPadding(20, 0, 20, 0);
+            // Seed label
             holder.seed = (TextView) row.findViewById(R.id.seed_text);
+            holder.seed.setPadding(0, 20, 25, 5);
+            holder.seed.setTextSize(20);
+            // The player object being shown
             holder.player = data.get(position);
 
             // Provide user-inputted data to fields in order to become visible.
@@ -60,6 +71,7 @@ public class MyArrayAdapter extends ArrayAdapter<Player> {
         holder.del_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.v("AddPlayers", "position clicked was: " + position);
                 data.remove(position);
                 notifyDataSetChanged();
             }

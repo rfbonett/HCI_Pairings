@@ -40,7 +40,7 @@
         android:layout_alignBottom="@+id/player_name_edit"
         android:layout_alignParentEnd="true"
         android:background="@color/holo_purple"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:onClick="addPlayer" />
 
     <Button
