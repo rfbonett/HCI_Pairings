@@ -21,16 +21,14 @@
         android:gravity="center"
         android:id="@+id/linearLayout">
 
-        <TextView
+        <ImageView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/tournament_setup"
-            android:id="@+id/setupTitle"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:textSize="32sp"
-            android:padding="15dp" />
+            android:layout_height="100dp"
+            android:src="@drawable/tournament_setup"
+            android:id="@+id/imageView"
+            android:contentDescription="Tournament Setup"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="300dp"
