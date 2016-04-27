@@ -39,8 +39,13 @@ public class AddPlayers extends Activity {
     public void addPlayer(View view) {
         // Add a new player to the list
         String new_player = player_edit.getText().toString();
+        if(new_player.equals("")) {
+            new_player = "player" + (selectionList.size()+1);
+        }
         Player player = new Player(new_player, selectionList.size()+1);
         selectionList.add(player);
+
+        // Update the visual.
         adapter.notifyDataSetChanged();
 
         // Reset the text field.

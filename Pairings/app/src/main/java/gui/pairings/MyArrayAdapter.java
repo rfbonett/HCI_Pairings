@@ -1,7 +1,5 @@
 package gui.pairings;
 
-import gui.pairings.R;
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -71,8 +69,13 @@ public class MyArrayAdapter extends ArrayAdapter<Player> {
         holder.del_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Log which position was clicked.
                 Log.v("AddPlayers", "position clicked was: " + position);
+
+                // Delete the entry.
                 data.remove(position);
+
+                // Update the visual.
                 notifyDataSetChanged();
             }
         });
