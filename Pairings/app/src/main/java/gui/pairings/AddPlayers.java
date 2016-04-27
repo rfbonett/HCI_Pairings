@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,11 +69,27 @@ public class AddPlayers extends Activity {
 
     // This defines the action that the Begin Tournament button will take.
     public void createTourney(View view) {
-        Intent intent = new Intent(this, TournamentScreen.class);
-        intent.putExtra("Player Selections", selectionList);
-        intent.putExtra("tournamentType", tournamentType);
-        intent.putExtra("tournamentName", tournamentName);
-        startActivity(intent);
+        if(selectionList.size() >= 2) {
+            Intent intent = new Intent(this, TournamentScreen.class);
+            // Make an array of players.
+            ArrayList<Player> players = new ArrayList<Player>();
+            for(PlayerHolder h : selectionList) {
+                players.add(h.player);
+            }
+            intent.putExtra("players", players);
+            intent.putExtra("tournamentType", tournamentType);
+            intent.putExtra("tournamentName", tournamentName);
+            startActivity(intent);
+        }
+        else{
+            Context context = getApplicationContext();
+            CharSequence text = "Please add at least 2 players.";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
     // Randomly shuffles the selected players if there is the desire for random seeds.
