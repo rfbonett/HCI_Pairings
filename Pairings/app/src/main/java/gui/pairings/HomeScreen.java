@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class HomeScreen extends Activity {
 
-    private Button newTournament, loadTournament, loadAutosave;
+    private Button loadTournament, loadAutosave;
     private ListView filesList;
 
     @Override
@@ -26,70 +26,45 @@ public class HomeScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-
-        newTournament = (Button)findViewById(R.id.new_tournament_button);
         loadAutosave = (Button) findViewById(R.id.load_autosave_button);
-        loadTournament = (Button)findViewById(R.id.load_tournament_button);        loadTournament.setOnClickListener(new View.OnClickListener() {
+        loadTournament = (Button) findViewById(R.id.load_tournament_button);
+        loadTournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String path = Environment.getExternalStorageDirectory().getPath();
                 final ArrayList<String> files = getFiles(path);
-                if (files != null) {
-                    loadTournament.setVisibility(View.GONE);
-                    ObjectAnimator anim = ObjectAnimator.ofFloat(newTournament, "translationY", -400);
-                    anim.setDuration(500);
-                    anim.addListener(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
+                loadTournament.setVisibility(View.GONE);
+                ObjectAnimator anim2 = ObjectAnimator.ofFloat(loadAutosave, "translationY", loadAutosave.getHeight());
+                anim2.setDuration(500);
+                anim2.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        if (files != null) {
                             filesList = (ListView) findViewById(R.id.files_list);
                             filesList.setVisibility(View.VISIBLE);
                             loadTournament(files);
                         }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-
+                        else {
+                            noFilesMessgage();
                         }
+                    }
 
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
 
-                        }
-                    });
-                    ObjectAnimator anim2 = ObjectAnimator.ofFloat(loadAutosave, "translationY", 400);
-                    anim2.setDuration(500);
-                    anim2.addListener(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
+                    }
 
-                        }
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
 
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
-
-                        }
-                    });
-                    anim.start();
-                    anim2.start();
-                }
-                else {
-                    noFilesMessgage();
-                }
+                    }
+                });
+                anim2.start();
             }
         });
     }
