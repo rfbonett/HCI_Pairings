@@ -1,7 +1,5 @@
 package gui.pairings;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,37 +32,14 @@ public class HomeScreen extends Activity {
                 String path = Environment.getExternalStorageDirectory().getPath();
                 final ArrayList<String> files = getFiles(path);
                 loadTournament.setVisibility(View.GONE);
-                ObjectAnimator anim2 = ObjectAnimator.ofFloat(loadAutosave, "translationY", loadAutosave.getHeight());
-                anim2.setDuration(500);
-                anim2.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        if (files != null) {
-                            filesList = (ListView) findViewById(R.id.files_list);
-                            filesList.setVisibility(View.VISIBLE);
-                            loadTournament(files);
-                        }
-                        else {
-                            noFilesMessgage();
-                        }
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
-                anim2.start();
+                if (files != null) {
+                    filesList = (ListView) findViewById(R.id.files_list);
+                    filesList.setVisibility(View.VISIBLE);
+                    loadTournament(files);
+                }
+                else {
+                    noFilesMessgage();
+                }
             }
         });
     }

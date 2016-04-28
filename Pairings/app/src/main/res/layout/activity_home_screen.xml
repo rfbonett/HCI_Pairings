@@ -42,7 +42,7 @@
         android:background="@color/colorPrimary"
         android:clickable="true"
         android:enabled="true"
-        android:layout_below="@+id/new_tournament_button"
+        android:layout_below="@+id/load_autosave_button"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -56,7 +56,7 @@
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentScreen"
-        android:layout_below="@+id/load_tournament_button"
+        android:layout_below="@+id/new_tournament_button"
         android:layout_centerHorizontal="true" />
 
     <ListView
