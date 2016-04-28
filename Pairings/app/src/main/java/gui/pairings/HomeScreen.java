@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class HomeScreen extends Activity {
 
-    private Button loadTournament, loadAutosave;
+    private Button loadTournament;
     private ListView filesList;
 
     @Override
@@ -24,13 +24,14 @@ public class HomeScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        loadAutosave = (Button) findViewById(R.id.load_autosave_button);
         loadTournament = (Button) findViewById(R.id.load_tournament_button);
         loadTournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Check to see if there are any files in the directory so we don't hit errors
                 String path = Environment.getExternalStorageDirectory().getPath();
                 final ArrayList<String> files = getFiles(path);
+                // Hide load button, appear ListView of files
                 loadTournament.setVisibility(View.GONE);
                 if (files != null) {
                     filesList = (ListView) findViewById(R.id.files_list);
@@ -55,6 +56,7 @@ public class HomeScreen extends Activity {
     }
 
     /*
+     * Gets autosave info
      * Moves to the tournament screen
      */
     public void moveToTournamentScreen(View view) {
@@ -63,7 +65,7 @@ public class HomeScreen extends Activity {
         startActivity(intent);
     }
 
-    /*
+/*
  * Opens a list of saved tournaments when the "Load Tournament"
  * button is clicked.
  */
@@ -78,12 +80,18 @@ public class HomeScreen extends Activity {
         });
     }
 
+    /*
+     * The only reason this has its own method is because I can't use the Context inside the onClickListener
+     */
     private void noFilesMessgage() {
         String msg = "No files to display.";
         Toast t = Toast.makeText(this, msg, Toast.LENGTH_LONG);
         t.show();
     }
 
+    /*
+     * Helper method to retrieve list of files
+     */
     public ArrayList<String> getFiles(String path) {
         ArrayList<String> myFiles = new ArrayList<String>();
         File f = new File(path);

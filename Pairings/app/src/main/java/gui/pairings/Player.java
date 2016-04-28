@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * This information includes the player's name, record, place, and previous opponents.
  * You can manipulate all of these variables from within the application.
  */
-public class Player {
+public class Player implements java.io.Serializable {
 
     private int gameWins, gamesPlayed, matchWins, matchesPlayed;
     private long place;
