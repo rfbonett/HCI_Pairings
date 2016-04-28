@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,6 +23,12 @@ public class HomeScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        // Store the files list.
+        filesList = (ListView) findViewById(R.id.files_list);
+
+        // Set the behavior of the files list when it's empty.
+        filesList.setEmptyView(findViewById(R.id.empty));
+
         loadTournament = (Button) findViewById(R.id.load_tournament_button);
         loadTournament.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,14 +37,9 @@ public class HomeScreen extends Activity {
                 String path = Environment.getExternalStorageDirectory().getPath();
                 final ArrayList<String> files = getFiles(path);
                 // Hide load button, appear ListView of files
-                loadTournament.setVisibility(View.GONE);
                 if (files != null) {
-                    filesList = (ListView) findViewById(R.id.files_list);
-                    filesList.setVisibility(View.VISIBLE);
+                    filesList.setEnabled(true);
                     loadTournament(files);
-                }
-                else {
-                    noFilesMessgage();
                 }
             }
         });
@@ -78,15 +78,6 @@ public class HomeScreen extends Activity {
                 // TODO: Read data from file and transition to tournament screen
             }
         });
-    }
-
-    /*
-     * The only reason this has its own method is because I can't use the Context inside the onClickListener
-     */
-    private void noFilesMessgage() {
-        String msg = "No files to display.";
-        Toast t = Toast.makeText(this, msg, Toast.LENGTH_LONG);
-        t.show();
     }
 
     /*

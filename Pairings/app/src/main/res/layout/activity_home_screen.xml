@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="gui.pairings.HomeScreen">
+    android:orientation="vertical"
+    tools:context="gui.pairings.HomeScreen" >
 
     <ImageView
         android:layout_width="fill_parent"
@@ -15,7 +17,6 @@
         android:src="@drawable/pairings_logo"
         android:id="@+id/pairings_logo"
         android:contentDescription="Pairings Logo"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -29,20 +30,6 @@
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentSetup"
-        android:layout_below="@+id/pairings_logo"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:padding="18dp"
-        android:layout_margin="10dp"
-        android:text="@string/load_tournament"
-        android:id="@+id/load_tournament_button"
-        android:background="@color/colorPrimary"
-        android:clickable="true"
-        android:enabled="true"
-        android:layout_below="@+id/load_autosave_button"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -56,14 +43,41 @@
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentScreen"
-        android:layout_below="@+id/new_tournament_button"
         android:layout_centerHorizontal="true" />
 
-    <ListView
-        android:id="@+id/files_list"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/load_autosave_button"
-        android:visibility="gone" />
+        android:layout_weight="0.1" >
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/empty"
+            android:text="No Saved\nTournaments"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+        <ListView
+            android:id="@+id/files_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/load_autosave_button"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:layout_margin="10dp"
+        android:text="@string/load_tournament"
+        android:id="@+id/load_tournament_button"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:enabled="false"
+        android:layout_centerHorizontal="true" />
+
+</LinearLayout>
