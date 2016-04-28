@@ -37,6 +37,9 @@ public class AddPlayers extends Activity {
         adapter = new PlayerAdapter(this);
         player_viewer.setAdapter(adapter);
 
+        // Set the behavior of the players list when it's empty.
+        player_viewer.setEmptyView(findViewById(R.id.empty));
+
         // Get the information passed from the TournamentScreen activity.
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

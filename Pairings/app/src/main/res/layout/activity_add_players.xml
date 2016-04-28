@@ -72,17 +72,32 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
 
-    <ListView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pselect_listView"
         android:layout_below="@+id/player_name_edit"
-        android:layout_above="@id/rand_Button"
-        android:layout_alignParentStart="true"
-        android:smoothScrollbar="true"
-        android:isScrollContainer="false"
-        android:scrollIndicators="right"
-        android:dividerHeight="2dp"
-        android:layout_alignParentEnd="false" />
+        android:layout_above="@+id/rand_Button"
+        android:layout_weight="0.1" >
+
+        <TextView
+            android:id="@+id/empty"
+            android:text="Please Add\nPlayers"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pselect_listView"
+            android:layout_above="@id/rand_Button"
+            android:smoothScrollbar="true"
+            android:isScrollContainer="false"
+            android:scrollIndicators="right"
+            android:dividerHeight="2dp" />
+
+    </LinearLayout>
     
 </RelativeLayout>
