@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,21 @@ public class AddPlayers extends Activity {
 
         // Set the behavior of the players list when it's empty.
         player_viewer.setEmptyView(findViewById(R.id.empty));
+
+        // Set the behavior of pressing the enter button while typing in a player name.
+        player_edit.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // add the player
+                    addPlayer(player_edit);
+                    player_edit.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         // Get the information passed from the TournamentScreen activity.
         Bundle extras = getIntent().getExtras();

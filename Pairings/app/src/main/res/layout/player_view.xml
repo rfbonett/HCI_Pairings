@@ -39,8 +39,8 @@
         android:background="@color/colorPrimaryDark"
         android:id="@+id/del_player_button"
         android:layout_margin="8dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
 </RelativeLayout>
