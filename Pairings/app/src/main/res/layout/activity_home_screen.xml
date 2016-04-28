@@ -30,7 +30,8 @@
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentSetup"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center" />
 
     <Button
         android:layout_width="320dp"
@@ -43,18 +44,24 @@
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentScreen"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.1" >
+        android:layout_width="320dp"
+        android:layout_gravity="center"
+        android:layout_height="0dp"
+        android:background="@drawable/listview_background"
+        android:foreground="@drawable/listview_foreground"
+        android:baselineAligned="false"
+        android:layout_weight="0.1"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/empty"
             android:text="No Saved\nTournaments"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:textSize="18sp"
             android:layout_height="match_parent"
             android:gravity="center" />
@@ -64,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/load_autosave_button"
+            android:dividerHeight="1dp"
             android:visibility="visible" />
 
     </LinearLayout>
@@ -78,6 +86,7 @@
         android:background="@color/colorPrimary"
         android:clickable="true"
         android:enabled="false"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center" />
 
 </LinearLayout>

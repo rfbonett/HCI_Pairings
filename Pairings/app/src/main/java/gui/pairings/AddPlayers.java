@@ -152,18 +152,10 @@ public class AddPlayers extends Activity {
 
             // Player name label
             holder.name = (TextView) row.findViewById(R.id.txtitem);
-            holder.name.setTextSize(24);
-            holder.name.setPadding(0, 12, 0, 0);
-
             // Delete button
             holder.delete = (Button) row.findViewById(R.id.del_player_button);
-            holder.delete.setBackgroundResource(R.color.colorPrimaryDark);
-            holder.delete.setPadding(20, 0, 20, 0);
-
             // Seed label
             holder.seed = (TextView) row.findViewById(R.id.seed_text);
-            holder.seed.setPadding(0, 20, 25, 5);
-            holder.seed.setTextSize(20);
 
             // Provide user-inputted rows to fields in order to become visible.
             holder.name.setText(holder.player.getName());

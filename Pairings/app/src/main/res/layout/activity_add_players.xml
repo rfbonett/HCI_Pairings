@@ -78,11 +78,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/player_name_edit"
         android:layout_above="@+id/rand_Button"
+        android:background="@drawable/listview_background"
+        android:foreground="@drawable/listview_foreground"
         android:layout_weight="0.1" >
 
         <TextView
             android:id="@+id/empty"
-            android:text="Please Add\nPlayers"
+            android:text="No Players\nAdded"
             android:layout_width="match_parent"
             android:textSize="18sp"
             android:layout_height="match_parent"
@@ -96,7 +98,7 @@
             android:smoothScrollbar="true"
             android:isScrollContainer="false"
             android:scrollIndicators="right"
-            android:dividerHeight="2dp" />
+            android:dividerHeight="1dp" />
 
     </LinearLayout>
     
