@@ -1,7 +1,5 @@
 package gui.pairings;
 
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,7 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class TournamentScreen extends AppCompatActivity {
+    private int round;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -39,17 +40,25 @@ public class TournamentScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament_screen);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        round = getIntent().getExtras().getInt("round");
+        String tournamentType = getIntent().getExtras().getString("tournamentType");
+        String tournamentName = getIntent().getExtras().getString("tournamentName");
+        ArrayList<Player> players = (ArrayList<Player>) getIntent().getSerializableExtra("players");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(tournamentName);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter.setCount(round + 1);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         // Set up tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
+        // Makes tabs with count from mViewPager and names from mSectionsPagerAdapter getPageTitle()
+        //tabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
     }
 
@@ -122,6 +131,7 @@ public class TournamentScreen extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        private int count;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -137,20 +147,19 @@ public class TournamentScreen extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return count;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "SECTION 1";
-                case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
+            if (position <= count) {
+                return "ROUND " + (position + 1);
             }
             return null;
+        }
+
+        public void setCount(int newCount) {
+            count = newCount;
         }
     }
 }

@@ -99,6 +99,7 @@ public class AddPlayers extends Activity {
             intent.putExtra("players", players);
             intent.putExtra("tournamentType", tournamentType);
             intent.putExtra("tournamentName", tournamentName);
+            intent.putExtra("round", 0);
             startActivity(intent);
         } else {
             // Show a warning that you need at least 2 players.
