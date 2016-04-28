@@ -13,4 +13,5 @@
     <string name="randomize_seeds">Randomize Seeds</string>
     <string name="begin_tournament">Begin Tournament</string>
     <string name="new_tournament">New Tournament</string>
+    <string name="load_latest_autosave">Load Latest Autosave\n4/27/16 8:40 PM</string>
 </resources>

@@ -11,26 +11,39 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:src="@drawable/pairings_logo"
-        android:id="@+id/imageView"
+        android:id="@+id/pairings_logo"
         android:contentDescription="Pairings Logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="fill_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:padding="18dp"
+        android:padding="19dp"
+        android:layout_margin="10dp"
         android:text="@string/new_tournament"
         android:id="@+id/new_tournament_button"
         android:background="@color/colorPrimary"
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentSetup"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/pairings_logo"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="@string/load_latest_autosave"
+        android:id="@+id/load_autosave_button"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:enabled="true"
+        android:onClick="moveToTournamentScreen"
+        android:layout_below="@+id/new_tournament_button"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

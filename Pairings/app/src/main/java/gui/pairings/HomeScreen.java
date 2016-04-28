@@ -23,4 +23,13 @@ public class HomeScreen extends Activity {
         Intent intent = new Intent(this, TournamentType.class);
         startActivity(intent);
     }
+
+    /*
+     * Moves to the tournament screen
+     */
+    public void moveToTournamentScreen(View view) {
+        Intent intent = new Intent(this, TournamentScreen.class);
+        // We would attach some extras here in a working implementation.
+        startActivity(intent);
+    }
 }
