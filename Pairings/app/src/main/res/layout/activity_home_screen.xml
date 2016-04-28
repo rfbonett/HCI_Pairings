@@ -35,6 +35,20 @@
     <Button
         android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:layout_margin="10dp"
+        android:text="@string/load_tournament"
+        android:id="@+id/load_tournament_button"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:enabled="true"
+        android:onClick="moveToTournamentSetup"
+        android:layout_below="@+id/new_tournament_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
         android:text="@string/load_latest_autosave"
@@ -43,7 +57,7 @@
         android:clickable="true"
         android:enabled="true"
         android:onClick="moveToTournamentScreen"
-        android:layout_below="@+id/new_tournament_button"
+        android:layout_below="@+id/load_tournament_button"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
