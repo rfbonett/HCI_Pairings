@@ -19,8 +19,7 @@
         <activity android:name=".AddPlayers" />
         <activity
             android:name=".TournamentScreen"
-            android:label="@string/title_activity_tournament_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_tournament_screen"></activity>
     </application>
 
 </manifest>

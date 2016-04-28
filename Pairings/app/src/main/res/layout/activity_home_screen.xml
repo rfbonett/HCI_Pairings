@@ -21,7 +21,7 @@
     <Button
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:padding="19dp"
+        android:padding="18dp"
         android:layout_margin="10dp"
         android:text="@string/new_tournament"
         android:id="@+id/new_tournament_button"
