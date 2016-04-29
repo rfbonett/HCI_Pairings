@@ -98,6 +98,7 @@
             android:smoothScrollbar="true"
             android:isScrollContainer="false"
             android:scrollIndicators="right"
+            android:divider="@color/colorAccent"
             android:dividerHeight="1dp" />
 
     </LinearLayout>

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/txtitem"
@@ -13,6 +13,7 @@
         android:layout_toEndOf="@+id/seed_text"
         android:layout_toStartOf="@+id/del_player_button"
         android:paddingLeft="20dp"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:gravity="center_vertical"
         android:layout_centerVertical="true" />
@@ -26,6 +27,7 @@
         android:layout_alignBottom="@+id/del_player_button"
         android:paddingLeft="20dp"
         android:textSize="24sp"
+        android:textColor="@color/white"
         android:gravity="center_vertical"
         android:layout_centerVertical="true" />
 
