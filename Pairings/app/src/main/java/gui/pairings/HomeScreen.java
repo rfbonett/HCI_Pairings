@@ -56,9 +56,10 @@ public class HomeScreen extends Activity {
                 final ArrayList<String> files = getFiles(path);
                 // Hide load button, appear ListView of files
                 if (files != null) {
-                    filesList.setEnabled(true);
                     loadTournament(files);
                 }
+
+                moveToTournamentScreen(loadTournament);
             }
         });
     }
