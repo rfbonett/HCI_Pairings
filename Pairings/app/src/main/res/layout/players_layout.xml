@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:stretchColumns="*" android:id="@+id/players_table">
+
+    <TableRow
+        android:layout_width="0dp"
+        android:background="@color/darkgray">
+        <TextView
+            android:text="Name"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="Record"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="Place"
+            android:gravity="center_horizontal"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp">
+        <TextView
+            android:text="Steelers"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="1 - 0"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="1"
+            android:gravity="center_horizontal"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp">
+        <TextView
+            android:text="Jaguars"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="1 - 0"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="2"
+            android:gravity="center_horizontal"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp">
+        <TextView
+            android:text="Patriots"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="0 - 0"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:text="3"
+            android:gravity="center_horizontal"/>
+    </TableRow>
+</TableLayout>

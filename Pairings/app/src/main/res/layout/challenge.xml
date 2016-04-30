@@ -43,12 +43,10 @@
         android:layout_height="wrap_content"
         android:paddingTop="48dp"
         android:layout_toRightOf="@+id/bracketImageView">
-        <ImageButton
-            android:id="@+id/victorButton"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/no_player"
-            android:background="@color/transparent"/>
+            android:src="@drawable/no_player" />
     </FrameLayout>
 
 </RelativeLayout>

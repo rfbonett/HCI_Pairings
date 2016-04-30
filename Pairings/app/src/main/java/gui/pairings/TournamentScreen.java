@@ -23,23 +23,32 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.NumberPicker;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class TournamentScreen extends AppCompatActivity {
 
-    private ViewPager bracketPager;
+    private ViewPager pager;
     private static Tournament tournament;
+    private static ArrayList<Player> players;
+    private ToggleButton bracketToggle;
+    private ToggleButton playerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament_screen);
 
-        ArrayList<Player> players = (ArrayList<Player>) getIntent().getSerializableExtra("players");
+        players = (ArrayList<Player>) getIntent().getSerializableExtra("players");
         String type = getIntent().getStringExtra("tournamenttype");
         String name = getIntent().getStringExtra("tournamentname");
         tournament = new Tournament(name, type);
@@ -48,8 +57,22 @@ public class TournamentScreen extends AppCompatActivity {
                 tournament.addPlayer(p);
             }
         }
-        bracketPager = (ViewPager) findViewById(R.id.bracketPager);
-        bracketPager.setAdapter(new BracketAdapter(getSupportFragmentManager()));
+        bracketToggle = (ToggleButton) findViewById(R.id.bracketButton);
+        playerToggle = (ToggleButton) findViewById(R.id.playersButton);
+        pager = (ViewPager) findViewById(R.id.bracketPager);
+        displayBracket(null);
+    }
+
+    public void displayBracket(View v) {
+        pager.setAdapter(new BracketAdapter(getSupportFragmentManager()));
+        bracketToggle.setChecked(true);
+        playerToggle.setChecked(false);
+    }
+
+    public void displayPlayers(View v) {
+        pager.setAdapter(new PlayerAdapter(getSupportFragmentManager()));
+        bracketToggle.setChecked(false);
+        playerToggle.setChecked(true);
     }
 
     @Override
@@ -204,19 +227,99 @@ public class TournamentScreen extends AppCompatActivity {
                     });
                     ((FrameLayout) bracketView.findViewById(R.id.secondPlayer)).addView(second);
                 }
+                if (c.getVictor() != null) {
+                    Button victor = new Button(context);
+                    victor.setText(c.getVictor().getName());
+                    victor.setLayoutParams(new FrameLayout.LayoutParams(width, height));
+                    ((FrameLayout) bracketView.findViewById(R.id.victor)).addView(victor);
+                }
+
                 return bracketView;
             }
 
-            public void launchResultDialog(Challenge c) {
+            public void launchResultDialog(final Challenge c) {
                 final Dialog d = new Dialog(context);
                 d.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 d.setContentView(R.layout.result_dialog);
-                TextView first = (TextView) d.findViewById(R.id.firstName);
-                first.setText(c.getFirst().getName());
-                TextView second = (TextView) d.findViewById(R.id.secondName);
-                second.setText(c.getSecond().getName());
+                final NumberPicker firstNum = (NumberPicker) d.findViewById(R.id.firstNumber);
+                if (c.getFirst() != null) {
+                    TextView first = (TextView) d.findViewById(R.id.firstName);
+                    first.setText(c.getFirst().getName());
+                    firstNum.setMaxValue(10);
+                    firstNum.setMinValue(0);
+                    firstNum.setValue(c.getFirst().getGameWins());
+                }
+                else {
+                    firstNum.setVisibility(View.GONE);
+                }
+                final NumberPicker secondNum = (NumberPicker) d.findViewById(R.id.secondNumber);
+                if (c.getSecond() != null) {
+                    TextView second = (TextView) d.findViewById(R.id.secondName);
+                    second.setText(c.getSecond().getName());
+                    secondNum.setMaxValue(10);
+                    secondNum.setMinValue(0);
+                    secondNum.setValue(c.getSecond().getGameWins());
+                }
+                else {
+                    secondNum.setVisibility(View.GONE);
+                }
+                Button b = (Button) d.findViewById(R.id.submitResults);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (c.getFirst() != null && c.getSecond() != null) {
+                            int res = firstNum.getValue() - secondNum.getValue();
+                            if (res != 0) {
+                                c.setVictor(res > 0 ? c.getFirst() : c.getSecond());
+                            }
+                        }
+                        d.cancel();
+                    }
+                });
                 d.show();
             }
+        }
+    }
+
+    class PlayerAdapter extends FragmentStatePagerAdapter {
+
+        public PlayerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return new PlayerFragment();
+        }
+
+        @Override
+        public int getCount() {
+            return 1;
+        }
+    }
+
+    public static class PlayerFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.players_layout, container, false);
+            TableLayout table = (TableLayout) rootView.findViewById(R.id.players_table);
+            for (Player p : players) {
+                TableRow row = new TableRow(getActivity());
+                row.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT));
+
+                TextView name = new TextView(getActivity());
+                name.setText(p.getName());
+                row.addView(name);
+                TextView record = new TextView(getActivity());
+                record.setText(p.getGameWins() + " - " + p.getGameLosses());
+                row.addView(record);
+                TextView place = new TextView(getActivity());
+                place.setText(String.valueOf(p.getPlace()));
+                row.addView(place);
+
+                table.addView(row);
+            }
+            return rootView;
         }
     }
 

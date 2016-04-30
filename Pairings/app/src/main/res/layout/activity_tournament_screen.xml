@@ -7,11 +7,41 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <LinearLayout
+        android:id="@+id/pageToggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true">
+        <ToggleButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bracketButton"
+            android:layout_weight="1"
+            android:textOn="Tournament"
+            android:textOff="Tournament"
+            android:onClick="displayBracket"
+            android:textSize="20sp"/>
+
+        <ToggleButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/playersButton"
+            android:layout_weight="1"
+            android:textOn="Players"
+            android:textOff="Players"
+            android:onClick="displayPlayers"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/bracketPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/pageToggle">
     </android.support.v4.view.ViewPager>
 
 </RelativeLayout>
