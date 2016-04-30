@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/button_size" android:layout_height="@dimen/button_size"
-    android:src="@drawable/no_player"
-    android:background="@color/transparent">
-
-</ImageButton>
