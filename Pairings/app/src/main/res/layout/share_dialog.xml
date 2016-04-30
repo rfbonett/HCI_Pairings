@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/twitterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/twitter"
+        android:background="@color/transparent"
+        android:onClick="shareTwitter"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/facebookButton"
+        android:layout_toEndOf="@+id/twitterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/facebook"
+        android:background="@color/transparent"
+        android:onClick="shareFacebook"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/emailButton"
+        android:layout_toEndOf="@+id/facebookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/gmail"
+        android:background="@color/transparent"
+        android:onClick="shareGmail"
+        android:padding="20dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/bracketImageView"
+        android:layout_width="200dp"
+        android:layout_height="140dp"
+        android:src="@drawable/bracket_image"
+        android:layout_centerHorizontal="true"/>
+
+    <FrameLayout
+        android:id="@+id/firstPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/bracketImageView"
+        android:layout_alignTop="@id/bracketImageView"
+        android:paddingTop="18dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_player"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/secondPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstPlayer"
+        android:paddingTop="22dp"
+        android:layout_toLeftOf="@+id/bracketImageView">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_player"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/victor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="48dp"
+        android:layout_toRightOf="@+id/bracketImageView">
+        <ImageButton
+            android:id="@+id/victorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_player"
+            android:background="@color/transparent"/>
+    </FrameLayout>
+
+</RelativeLayout>
